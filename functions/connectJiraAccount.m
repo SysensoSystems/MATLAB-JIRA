@@ -58,6 +58,8 @@ else
         for projectDataCount = 1:length(projectData)
             nodeData = projectData{projectDataCount}.name;
             nodeData = nodeData(~isspace(nodeData));
+            %Ensure nodeData has valid Matlab name
+            nodeData = matlab.lang.makeValidName(nodeData);
             % Create node according to project name
             eval([nodeData '= uitreenode(guiHandles{6});']);
             charData = char(nodeData);
